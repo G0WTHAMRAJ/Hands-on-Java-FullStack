@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Default parameter
+        const sum=(x=10,y=5)=>x+y
+        document.write("Addition : " + sum(4,5))
+        document.write("Addition : " + sum())
+
+        //REST Parameter 
+        const array = (...brr)=>{
+            document.write("<br> sum of all numbers  : " +brr.length)
+            let sum =0;
+            for (let i of brr){
+                sum+=i
+
+            }
+            return sum;
+        }
+        document.write("<br> summ of all elements" + array(10,20,30,40,50))
+        
+        const array1 = (x,y,...brr)=>{
+            document.write("<br> sum of all numbers  : " +brr.length )
+            let sum =0;
+            for (let i of brr){
+                sum+=i
+
+            }
+            return sum;
+        }
+        document.write("<br> summ of all elements" + array1(10,20,30,40,50))
+
+        //template literal
+
+        const array2 = (x,y,...brr)=>{
+            document.write(`<br> template literals: ${brr.length}` )
+            let sum =0;
+            for (let i of brr){
+                sum+=i
+
+            }
+            return sum;
+        }
+        document.write(`<br> summ of all elements: ${ array2(10,20,30,40,50)}`)
+    </script>
+    
+</body>
+</html>

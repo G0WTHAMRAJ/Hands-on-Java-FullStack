@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        //old function statement
+        const sum = function(x,y){return x+y }
+        document.write("Additiion: "+sum(10,20))
+
+
+        //with multiple argument and single statement 
+        const sub =(x,y) => x-y;
+        document.write("<br>Subration"+ sub(20,10))
+        
+
+        //with one argument and multiple statement 
+        const fact = (n) =>{
+            let f = 1
+
+           for (let i = 1;i<=n;i++)
+            f = f*i;
+        return f
+        }
+        document.write("<br>fact  " + fact(5))
+        
+
+        //without arugment 
+        const greeting=()=>"welcome all"
+        document.write("<br>" +greeting());
+    </script>
+    
+</body>
+</html>

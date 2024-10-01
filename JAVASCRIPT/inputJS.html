@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function findFactorial(){
+            let n = parseInt(document.getElementById("n").value);
+            var sum = 1;
+            
+            for (let i = 1;i<=n;i++){
+                 sum = sum*i;
+                document.write(n+" "+sum);
+                
+                
+
+
+            }
+    
+        }
+
+    </script>
+</head>
+<body>
+    enter the number<input type="text" id="n"/>
+    <br>
+    <br>
+    <button onclick="findFactorial()">FIND FACTORIAL</button>
+    
+</body>
+</html>

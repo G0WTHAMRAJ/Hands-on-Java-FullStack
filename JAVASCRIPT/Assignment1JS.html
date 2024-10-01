@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    function cal(){
+       var a= parseInt( document.getElementById("number1").value)
+       var b =parseInt(document.getElementById("number2").value)
+       var option = document.getElementById("calculation").value
+       if(option == "addition"){
+        let result=a+b
+
+       document.getElementById("result").innerHTML="<br><b> "+result;
+       }
+       else if(option == "subration"){
+        let result = a-b
+        document.getElementById("result").innerHTML="<br><b> "+result;
+       }
+       else if(option == "multiply"){
+        let result=a*b
+        document.getElementById("result").innerHTML="<br><b> "+result;
+       }
+       else{
+        let result = a/b
+        document.getElementById("result").innerHTML="<br><b> "+result;
+       }
+    }
+        
+
+    </script>
+</head>
+<body>
+    <input type="text" id="number1"/>
+    <br>
+    <br>
+    <input type="text" id="number2"/>
+    <br>
+    <br>
+    <select name="arithemetic" id="calculation">
+        <option value="addition">+</option>
+        <option value="subration">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+    </select>
+    <button onclick="cal()">Find the cal</button>
+    <div id="result"></div>
+    
+
+    
+</body>
+</html>

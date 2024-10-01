@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["arun" , "vignesh","ram","jaicharan"]
+        document.write("<br>no of names  : "+names.length)
+        document.write("<br>names is the array  : " +names);
+        for (let i of names){
+            document.write("<br>  name : "+i)
+        }
+        names[1] = "ramesh"
+        document.write("<br> changed name " + names)
+
+        names.push("avinash")
+        document.write("<br> push names : " + names)
+
+        names.pop()
+        document.write("<br> pop function in array :  " + names)
+
+        names.unshift("aravind")
+        document.write("<br> unshift function in array :  " + names)
+
+        names.shift()
+        document.write("<br> shift function in array :  " + names)
+
+        names.splice(1,2)
+        document.write("<br> slice function in array :  " + names)
+
+        document.write("<br> property of splicae :  "+names.length)
+
+        names.length = 3;
+        document.write("<br> property changing the length:  "+names.length)
+
+        names[2] = "jawan";
+        names[3]= "pathan";
+        document.write("<br> property of splice :  "+names)
+
+        names.length=2
+        document.write("<br> property of splice :  "+names)
+
+        names.length = 4
+        document.write("<br> property of splice :  "+names)
+
+
+
+    </script>
+    
+</body>
+</html>
