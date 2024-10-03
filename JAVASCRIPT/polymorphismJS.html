@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Polymorphism 
+        class Animal{
+            move(){
+                document.write("<br>All animals will move in forest")
+            }
+
+        }
+        class Dog extends Animal{
+            move(){
+                document.write("<br>All animals will move by walk")// overidding method move
+
+            }
+        }
+        class Birds extends Animal{
+            move(){
+                document.write("<br>All animals will move by Fly")
+
+            }
+        }
+        let dog1 = new Dog
+        dog1.move()
+
+        let bird = new Birds
+        bird.move()
+    </script>
+    
+</body>
+</html>

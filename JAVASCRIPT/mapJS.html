@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+
+        // creating Map assigning values method 1
+        let map1 = new Map();
+        map1.set(1,"JAVA")
+        map1.set(2,"python")
+        map1.set(3,"html")
+
+        //method 2
+        let map2 = new Map([[10,"gowtham"],[30,"nivvetan"],[40,"aravind"]])
+
+        //iterating map
+        for (let [k,v] of map2){
+            document.write(`<br> ${k} = > ${v}`) // method 1
+            document.write("<br>" +k +"=>"+ v)//method 2
+        }
+
+        //get using key 
+        for (let k of map1.keys()){
+            document.write("<br>"+k + "=>" +map1.get(k)); //method 3 using keys 
+        }
+
+        //itrating in object
+
+        let map3 =new Map()
+        map3.set(1001,{id:1, name:"gowtham" , salary:2000})
+        map3.set(1002,{id:2, name:"nivvetan" , salary:3000})
+        map3.set(1003,{id:3, name:"lingesh" , salary:4000})
+        document.write("<br>" +map3);
+
+        for(let[key,emp] of map3){
+            let{id,name,salary} = emp
+            document.write ("<br>" +key+"=>{id"+id + ",name:" +name+",salary:" + salary+"}");
+            document.write (`<br> using lateral ${key} =>id +${id},name:${name},salary: ${salary}`);
+
+        }
+
+        //WEAKMAP paasing only the objects
+        let map4 =new WeakMap()
+        map4.set({id:1001},{id:1, name:"gowtham" , salary:2000})
+        map4.set({id:1002},{id:2, name:"nivvetan" , salary:3000})
+        map4.set({id:1003},{id:3, name:"lingesh" , salary:4000})
+        document.write("<br>" +map4);
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person
+        {
+            constructor(name,email){
+                this.name = name
+                this.email=email
+            }
+
+            displayPersonDetails(){
+                document.write("<br>person name : "+ this.name)
+                document.write("<br> person email : " + this.email)
+            }
+        }
+        class Employee extends Person{
+            constructor(name,email,eid,esalary){
+                super(name,email)
+                this.eid=eid
+                this.esalary=esalary
+            }
+
+            displayEmployeeDetails(){
+                super.displayPersonDetails()
+                document.write(`<br> id of the employee : ${this.eid}`)
+                document.write("<br> salary of the employee:"+ this.esalary)
+            }
+        }
+
+        let person1 = new Employee("gowtham", "gowthamraj@gmail.com",1001,2000)
+        let person2 = new Employee("nivvetan", "nivvetansign@gmail.com",2001,5000)
+
+        person1.displayEmployeeDetails();
+        person2.displayEmployeeDetails();
+    </script>
+</body>
+</html>

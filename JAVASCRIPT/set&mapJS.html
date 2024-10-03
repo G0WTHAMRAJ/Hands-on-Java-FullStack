@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let set1=new Set();// create a set  
+        let set2 = new Set([10,20,"gowtham"]);// adding elements in set statically
+
+        for (let i of set2.values()){
+            document.write("<br>" + i)
+        }
+        set2.add("nivvetan")// adding additional element ,duplicate elemets are not allowed and it is case sensitive
+        for (let i of set2.values()){
+            document.write("<br>" + i)
+        }
+
+        // has method 
+        document.write("<br>"+set2.has(10))
+
+        //delete method
+        set2.delete(10)
+
+        document.write("<br>"+set2.has(10))
+        
+        // remove all elements
+        set2.clear();
+
+
+        //weakSET ---> other kind of set which holds only object and values
+        let set3 =new WeakSet()
+        let employee1 = {id:1001, name:"gowtham",salary:2000}
+        set3.add(employee1)
+
+        // set3.add(10)   cannot hold values 
+        document.write("<br>"+set3)
+        document.write("<br>"+ set2.has(employee1)) // Contains has method and delete method but we cannot iterate WeakSet          
+        
+        //iterating object
+
+    
+
+    </script>
+</body>
+</html>

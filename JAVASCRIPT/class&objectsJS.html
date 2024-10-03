@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Class and objects
+        class Employee{
+
+            constructor(eid,ename,esalary){
+                this.eid=eid
+                this.ename= ename
+                this.esalary=esalary
+            }
+            display(){
+                document.write("<br> employee ID = >" +this.eid)
+                document.write("<br>employee name =>" +this.ename)
+                document.write("<br> salary of employee = >"+this.esalary  )
+            }
+        }
+
+        let emp1 = new Employee(101,"gowtham",2000)
+        let emp2 = new Employee(102,"nivvetan",300)
+
+        emp1.display()
+        emp2.display()
+    </script>
+</body>
+</html>
