@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Factorial Table</h2>
+    
+    <div>
+      <label for="numberInput">Enter a Number:</label>
+      <input type="number" id="numberInput" [(ngModel)]="number" (input)="generateFactorialTable()" min="1">
+    </div>
+  
+    <table *ngIf="factorialTable.length > 0" border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Factorial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of factorialTable">
+          <td>{{ row.number }}</td>
+          <td>{{ row.factorial }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

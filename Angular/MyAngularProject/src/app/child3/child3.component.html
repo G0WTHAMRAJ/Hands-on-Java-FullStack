@@ -1,0 +1,27 @@
+<p>child3 works!</p>
+<br>
+<button (click)="changeFlag()">show or hide</button>
+<br>
+<div *ngIf="flag" style="width: 200px;height: 200px;border: 1px solid green;">
+<button (click)="changeFlag()">show or hide</button>
+<div *ngIf="flag" style="width: 200px;height: 200px;border: 1px solid green;">
+    <ul>
+        <li *ngFor="let e " (click)="setSelectedItem(e)">{{e}}</li>
+    </ul>
+    <b>You have selected :{{setSelectedItem}}</b>
+    <div [ndSwitch]="setSelectedItem">
+        <Img src="./panda.jpg" *ngSwitchCase='panda' width="200px" height="200"/>
+        <Img src="./lion.jpg" *ngSwitchCase='lion' width="200px" height="200"/>
+        <Img src="./lion.jpg" *ngSwitchCase='cat' width="200px" height="200"/>
+        <font color="green" *ngSwitchDefault>Invalid</font>
+    </div>
+</div>
+<br>
+<p [ngStyle]="myStyle" >this is the example</p>
+<br>
+<button (click)="changeStyle()">Change Style</button>
+<br>
+<p [ngClass]="myClass" >this is the example for class</p>
+<br>
+<button (click)="changeClass()">Change Style</button>
+<br>

@@ -1,0 +1,39 @@
+<style>
+  #name{
+    color: aqua;
+    size: 25px;
+    background-color: black;
+  }
+  h2{
+    color: green;
+  }
+</style>
+
+<h1 id="name">hello world</h1>
+<br>
+<h2> my name is {{name}}</h2>
+<h2>age is {{age}}</h2>
+<app-child1></app-child1>
+<br>
+Addition:{{getAddition(10,20)}}
+<br>
+Addition:<input type="text" value="{{getAddition(20,30)}}"/>
+<br>
+Name:<input type="text" value="{{name}}"/>
+<br>
+<img src="{{image}}" width="{{width}}" height="{{height}}"/>
+<br>
+
+Name:<input type="text" [value]="name"/>
+<br>
+<img [src]="image" [width]="width" [height]="height"/>
+<br>
+<button (click)="changeValue()">{{btn1}} </button>
+<br>
+<button (click)="changeImg()">{{btn2}}</button>
+<br>
+enter your name<input type="text" [(ngModel)]="fname"/>
+<br>
+welcome {{fname}}
+<br>
+

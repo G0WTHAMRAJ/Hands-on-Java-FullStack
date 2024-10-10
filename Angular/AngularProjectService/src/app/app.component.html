@@ -1,0 +1,24 @@
+<!-- 
+<h1>Angular service</h1>
+<br>the value is {{sum}}
+<br>the value is {{sub}}
+<br>
+enter the nummber<input type="text" [(ngModel)]="input"/>
+<br>
+<button (click)="getFactorailValues()">getvalues</button>
+<table border="1" width="60%" align="center">
+  <tr><th>number</th><th>Factorial</th></tr>
+  <tr *ngFor="let fact of factorials;let i = index"><td>{{i+1}}</td><td>{{fact}}</td></tr>
+</table>
+-->
+<table width="80%" align="center">
+  <tr>
+    <th><a routerLink="Home">Home</a></th>
+    <th><a routerLink="Contact">Contact</a></th>
+    <th><a routerLink="About">About</a></th>
+  </tr>
+  <br>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</table>

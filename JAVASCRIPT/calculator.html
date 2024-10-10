@@ -33,14 +33,51 @@
 <body>
    <div class="cal">
     <table>
+        <div id="user"></div>
        <tr ><td colspan="4"> <textarea name="cal" id="display" ></textarea></td></tr>
-       <tr> <td> <button>c</button></td><td><button>%</button></td><td><button>=</button></td><td><button>/</button></td></tr>
-       <tr> <td> <button>7</button></td><td><button>8</button></td><td><button>9</button></td><td><button>*</button></td></tr>
-       <tr> <td> <button>4</button></td><td><button>5</button></td><td><button>6</button></td><td><button>-</button></td></tr>
-       <tr> <td> <button>1</button></td><td><button>2</button></td><td><button>3</button></td><td><button>+</button></td></tr>
-       <tr> <td> <button>00</button></td><td><button>0</button></td><td><button>.</button></td><td><button>=</button></td></tr>
+       <tr> <td> <button value="c" onclick="Clear()">c</button></td><td><button value="%" onclick="solve('%')">%</button></td><td><button value="=" onclick="solve('=')">=</button></td><td><button value="/" onclick="solve('/')">/</button></td></tr>
+       <tr> <td> <button value="7" onclick="solve('7')">7</button></td><td><button value="8" onclick="solve('8')">8</button></td><td><button value="9" onclick="solve('9')">9</button></td><td><button value="*" onclick="solve('*')">*</button></td></tr>
+       <tr> <td> <button value="4" onclick="solve('4')">4</button></td><td><button value="5" onclick="solve('5')">5</button></td><td><button value="6" onclick="solve('6')">6</button></td><td ><button value="-" onclick="solve('-')">-</button></td></tr>
+       <tr> <td> <button value="1" onclick="solve('1')">1</button></td><td><button value="2" onclick="solve('2')">2</button></td><td><button value="3" onclick="solve('3')">3</button></td><td><button value="+" onclick="solve('+')">+</button></td></tr>
+       <tr> <td> <button>00</button></td><td><button>0</button></td><td><button>.</button></td><td><button onclick="Result()">=</button></td></tr>
     </table>
    </div>
+   <script>
+    function solve(val) {
+   var v = document.getElementById('display');
+   v.value += val;
+}
+function Result() {
+   var num1 = document.getElementById('display').value;
+   try {
+      var num2 = eval(num1.replace('x', '*'));
+      document.getElementById('display').value = num2;
+   } catch {
+      document.getElementById('display').value = 'Error';
+   }
+}
+function Clear() {
+   var inp = document.getElementById('display');
+   inp.value = '';
+}
+function Back() {
+   var ev = document.getElementById('display');
+   ev.value = ev.value.slice(0, -1);
+}
+document.addEventListener('keydown', function (event) {
+   const key = event.key;
+   const validKeys = '0123456789+-*/.%';
+   if (validKeys.includes(key)) {
+      Solve(key === '*' ? 'x' : key);
+   } else if (key === 'Enter') {
+      Result();
+   } else if (key === 'Backspace') {
+      Back();
+   } else if (key.toLowerCase() === 'c') {
+      Clear();
+   }
+});
+   </script>
     
 </body>
 </html>
