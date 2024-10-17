@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'AngularForms'`, () => {
+  it(`should have as title 'EMS-APP'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    //expect(app.title).toEqual('AngularForms');
+    //expect(app.title).toEqual('EMS-APP');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, AngularForms');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, EMS-APP');
   });
 });

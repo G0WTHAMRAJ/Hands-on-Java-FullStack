@@ -1,0 +1,16 @@
+{
+  "customers": [
+    {
+      "id": "101",
+      "custName": "raj",
+      "custMail": "raj@gmail.com",
+      "custBalance": 2000
+    },
+    {
+      "id": "102",
+      "custName": "Nivvetan",
+      "custMail": "nivvetan@gmail.com",
+      "custBalance": 3000
+    }
+  ]
+}

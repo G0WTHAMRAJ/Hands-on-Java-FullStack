@@ -8,7 +8,4 @@ import { Component } from '@angular/core';
 export class PipesComponent {
   name:string="Gowtham"
   date:Date=new Date()
-
-
-
 }
