@@ -1,0 +1,292 @@
+create table tbl_employee(
+    eid number(5),
+    ename varchar2(20),
+    esalary number(5),
+    edate date
+    
+);
+desc tbl_employee;
+
+insert into tbl_employee values(101,'gowtham',5555,'01-jan-2002');
+insert into tbl_employee values(102,'raj',2222,'02-jan-2002');
+insert into tbl_employee values(103,'nivy',3333,'01-jan-2003');
+insert into tbl_employee values(104,'jai',4444,'02-jan-2003');
+
+commit;
+select*from tbl_employee;
+insert into tbl_employee values(105,null,5555,'01-jan-2002');
+insert into tbl_employee(eid , esalary) values(106,6666);
+select*from tbl_employee;
+commit;
+--drop table tbl_employee;
+select eid,esalary from tbl_employee;
+
+select *from tbl_employee where eid=101;
+select *from tbl_employee where ename='preethi';
+select *from tbl_employee where eid!=101;
+select *from tbl_employee where eid<>101;.
+
+
+select *from tbl_employee where esalary<=4000;
+select *from tbl_employee where esalary>=4000;
+
+select *from tbl_employee where ename is null;
+select *from tbl_employee where ename is not null;
+select *from tbl_employee where ename <> 'preethi';
+
+select *from tbl_employee where eid in (101,102,106);
+select *from tbl_employee where eid not in (101,102,106);
+
+select *from tbl_employee where eid in (101,102,106) and ename is null
+select *from tbl_employee where eid in (101,102,106) or ename is null;
+
+select * from tbl_employee where esalary between 3000 and 5000;
+select * from tbl_employee where esalary not between 3000 and 5000;
+
+select * from tbl_employee where ename like '_a%';
+select * from tbl_employee where ename like '%a%';
+select * from tbl_employee where ename like '%a';
+select * from tbl_employee where ename like 'p%';
+select * from tbl_employee where ename like '__a%';
+select * from tbl_employee where ename not like '__a%';
+
+
+commit;.
+// delete-delete all or particular records and can rollback
+
+
+delete from tbl_employee;
+rollback;
+select*from tbl_employee;
+
+delete from tbl_employee where eid=101;
+select*from tbl_employee;
+
+//update
+
+update tbl_employee set esalary=5000 where eid=101;
+select*from tbl_employee;
+update tbl_employee set eid=0,esalary=0 where ename is null;
+select * from tbl_employee;
+
+// for getting distinct values 
+
+   select distinct esalary from tbl_employee;
+
+// alter command-add,drop,modify,rename
+
+   alter table tbl_employee add doj date;
+   desc tbl_employee;
+
+// sysdate - to get current date
+
+  select sysdate from dual;
+  select sysdate from tbl_employee;
+  select distinct sysdate from tbl_employee;
+
+  update tbl_employee set doj=sysdate where ename is not null;
+  select * from tbl_employee;
+
+
+  select eid,esalary,esalary+200 from tbl_employee;// we can use expression also in select
+
+  alter table tbl_employee drop column doj;
+
+
+  alter table tbl_employee modify esalary number(10);
+  desc tbl_employee;
+
+alter table tbl_employee rename column esalary to emp_salary;
+
+// rename a  table
+
+  rename tbl_employee to tbl_myemployee;
+
+// copy table
+
+   create table tbl_name as select*from tbl_myemployee;
+
+// truncate-delete all records and cannot rollback
+
+  truncate table tbl_myemployee
+
+// drop-entire table will be delted including struture
+
+   drop table tbl_myemployee;
+
+   alter table tbl_employee add  dno number(10);
+
+   update tbl_employee set dno=10 where eid in (101,102,103,104);
+
+   update tbl_employee set dno=20 where eid  not in (101,102,103,104);
+
+   select*from tbl_employee;
+ 
+// groupby and count
+
+   select dno,count(*) from tbl_employee group by dno;
+
+//group functions
+
+  select dno,count(*) ,sum(emp_salary),min(emp_salary),max(emp_salary),avg(emp_salary)from tbl_employee group by dno;
+
+//having
+select dno,count(*) from tbl_employee group by dno having min(emp_salary)>0;
+
+// alias
+
+select eid as "employee id" from tbl_employee;
+
+// order by
+
+select * from tbl_employee order by eid;
+select * from tbl_employee order by eid desc;
+
+
+
+
+
+
+
+
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+
+select * from agents
+
+create table customers(
+    customer_code varchar2(5),
+    customer_name varchar2(20),
+    customer_Area varchar2(10));
+insert into customers values('C101','customer1','chennai');
+insert into customers values('C102','customer2','chennai');
+insert into customers values('C103','customer3','chennai');
+insert into customers values('C104','customer4','bangalore');
+insert into customers values('C105','customer5','bangalore');
+insert into customers values('C106','customer6','delhi');
+drop table agents
+
+select * from customers
+
+--inner join without join key word
+select a.agent_name,c.customer_name,c.customer_area from agents a ,customers c where a.working_area=c.customer_area
+
+--inner join with join keyword
+select a.agent_name,c.customer_name,c.customer_area from agents a join customers c on a.working_area=c.customer_area
+
+
+--inner join with join keyword and not operator
+select a.agent_name,c.customer_name,c.customer_area from agents a join customers c on a.working_area<>c.customer_area
+
+--left join method-1
+select * from agents left join customers on agents.working_area=customers.customer_area
+
+
+--left join method-2
+select * from agents ,customers where agents.working_area=customers.customer_area(+)
+
+--right join method-1
+select * from agents right join customers on agents.working_area=customers.customer_area
+
+
+--right join method-2
+select * from agents,customers where agents.working_area(+)=customers.customer_area
+
+
+--full outer join 
+select * from agents full join customers on agents.working_area=customers.customer_area
+
+
+--cross join 
+select * from agents cross join customers
+
+--SubQuery passing one value from inside query 
+select * from agents where working_area=(select customer_area from customers where customer_code='C101')
+
+select * from customers where customer_area=(select working_area from agents where agent_name='agent1' )
+
+--SubQuery passing multiple value from inside query and using in keyword to compare
+select * from customers where customer_area in (select working_area from agents where agent_name='agent1'  or agent_name='agent4')
+
+
+--sequence creating
+create sequence seq_emp_id_generator start with 1000 increment by 1;
+
+
+--using sequence with nextval keyword
+select seq_emp_id_generator.nextval from dual.
+
+
+--using sequence with currval keyword
+select seq_emp_id_generator.currval from dual
+insert into agents values(seq_emp_id_generator,)
+
+
+create table employee(
+    eid number(5),
+    ename varchar2(20),
+    esalary number(5)
+    
+);
+
+insert into employee values(101,'raj',5555);
+insert into employee values(102,'venu',2222);
+insert into employee values(103,'chandra',3333);
+insert into employee values(104,'lakshmi',4444);
+insert into employee values(seq_emp_id_generator.nextval,'nivy',55444);
+insert into employee values(seq_emp_id_generator.nextval,'lok',65444);
+
+select * from employee
+    
+--view 
+create view view_employee1 as select * from employee where eid<1000;
+--selecting view
+select * from view_employee1
+
+--updating the view affects the base table employee
+update view_employee1 set esalary=80000 where eid=102
+    
+--deleting the view affects the base table employee
+delete from view_employee1 where eid=102
+    
+--drop view
+drop view view_employee1
+
+
+create table tbl_student(sid number(5) primary key,
+    sname varchar2(20) not null,
+    smobil number(10) unique,
+    smark number(5) check(smark>=0),
+    sloaction varchar(20) default 'chennai',
+    sdoj date default sysdate)
+    
+insert into tbl_student (sid,sname,smobil,smark) values(101,'raj',1234,60)
+select * from tbl_student
+insert into tbl_student (sid,sname,smobil,smark) values(101,'raj',1234,60)
+insert into tbl_student (sid,sname,smobil,smark) values(101,null,1234,60)
+create table tbl_dept(dno number(3) primary key,dname varchar2(10));
+create table tbl_employee2(eid number(5) primary key,ename varchar2(10),esalary number(10),dno number(3) ,foreign key (dno) references tbl_dept(dno))
+insert into tbl_employee2 values(101,'raj',4000,20)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

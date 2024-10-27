@@ -1,0 +1,221 @@
+-- basic plsql
+declare
+name varchar2(20):='Raj';
+begin
+dbms_output.put_line('welcome '||name);
+end;
+
+--using default
+declare
+eid number(5):=101;
+ename varchar2(20) default 'niv';
+esalary number(10):=70000;
+begin
+dbms_output.put_line('id '||eid);
+dbms_output.put_line('name '||ename);
+dbms_output.put_line('salary '||esalary);
+end;
+
+--arithmethic
+DECLARE
+num1 number(5);
+num2 number(5);
+begin
+dbms_output.put_line('Enter 2 numbers');
+num1:= &n1;
+num2:= &n2;
+dbms_output.put_line('sum: ' || (num1+num2));
+dbms_output.put_line('sub: ' || (num1-num2));
+dbms_output.put_line('multiply: ' || (num1*num2));
+dbms_output.put_line('divi: ' || (num1/num2));
+end;
+
+--assigning values from table to plsql varible and accessing the values
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+select * from agents
+
+declare 
+name agents.agent_name%type;
+area agents.working_area%type;
+begin
+select agent_name,working_area into name ,area from agents where agent_code=&code;
+dbms_output.put_line('Name :'||name);
+dbms_output.put_line('Area :'||area);
+end;
+
+
+--deleting and updating values from plsql to table data
+
+create table agents(
+    agent_code varchar2(5),gggbb
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+select * from agents
+
+begin
+insert into agents values(&code,&name,&area);
+dbms_output.put_line('Record Inserted');
+delete from agents where agent_code=&code;
+dbms_output.put_line('Record deleted');
+end;
+
+--global and local variable
+declare
+v_outer_variable varchar2(20):='Golbal Variable';
+begin
+  declare
+  v_inner_variable varchar2(20):='Local Variable';
+  begin
+  dbms_output.put_line(v_outer_variable);
+  dbms_output.put_line(v_inner_variable);
+  end;
+dbms_output.put_line(v_outer_variable);
+end;
+
+Output:
+
+Golbal Variable
+Local Variable
+Golbal Variable
+
+--if condition
+
+declare
+n1 number(10);
+n2 number(10);
+begin
+  dbms_output.put_line('Enter 2 numbers');
+  n1:= &n1;
+  n2:= &n2;
+  if n1>n2 then
+    dbms_output.put_line('the greatest value is :'||n1);
+
+  else
+    dbms_output.put_line('the greatest value is :'||n2);
+  end if;
+end;
+
+--case condition
+
+declare
+n1 varchar2(20):='r';
+begin
+  dbms_output.put_line('enter the letter');
+  case n1
+    when'r'then
+    dbms_output.put_line('red');
+    when'g'then
+    dbms_output.put_line('green');
+    else
+    dbms_output.put_line('white color');
+  end case;
+end;
+
+--loop
+declare
+v_count number(3) default 0;
+begin
+loop
+v_count:=v_count+1;
+dbms_output.put_line(v_count);
+exit when v_count=5;
+end loop;
+end;
+
+Output:
+
+1
+2
+3
+4
+5
+
+--while loop
+
+declare
+num1 number(3);
+begin
+num1:=&n1;
+while num1<=5
+loop
+num1:=num1+1;
+dbms_output.put_line(num1);
+end loop;
+end;
+
+--for loop
+
+declare
+num1 number(3);
+begin
+num1:=&n1;
+for num1 in 1..5
+loop
+dbms_output.put_line('count '||num1);
+end loop;
+end;
+
+output:
+count 1
+count 2
+count 3
+count 4
+count 5
+
+--for loop in using reverse
+declare
+num1 number(3);
+begin
+num1:=&n1;
+for num1 in reverse 1..5
+loop
+dbms_output.put_line('count '||num1);
+end loop;
+end;
+
+output:
+count 5
+count 4
+count 3
+count 2
+count 1
+
+--Record 
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+
+declare
+my_record agents%rowtype;
+begin
+  select * into my_record from agents where agent_code='A101';
+  dbms_output.put_line('Id : '|| my_record.agent_code);
+  dbms_output.put_line('Name : '|| my_record.agent_name);
+  dbms_output.put_line('Area :'|| my_record.working_Area);
+end;
+
+Output:
+
+Id : A101
+Name : agent1
+Area :chennai
+

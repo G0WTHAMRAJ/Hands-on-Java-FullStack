@@ -1,0 +1,28 @@
+{
+  "customers": [
+    {
+      "id": "101",
+      "name": "rajesh",
+      "email": "rajesh@gmailcom",
+      "accNumber": "123456789",
+      "phnNumber": "12345678",
+      "balance": "234567"
+    },
+    {
+      "id": "107",
+      "name": "raj",
+      "email": "raj@gmailcom",
+      "accNumber": "12345645",
+      "phnNumber": "12345678",
+      "balance": "12345"
+    },
+    {
+      "id": "102",
+      "name": "nivy",
+      "email": "nivy@gmailcom",
+      "accNumber": "45676543",
+      "phnNumber": "98765456",
+      "balance": "20000000"
+    }
+  ]
+}
