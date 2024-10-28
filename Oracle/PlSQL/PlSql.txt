@@ -219,3 +219,237 @@ Id : A101
 Name : agent1
 Area :chennai
 
+--procedure
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+select * from agents;
+
+
+create or replace procedure MyProc is
+v_name varchar2(30);
+begin
+select agent_name into v_name from agents where agent_code='A101';
+dbms_output.out_line('Employee '||v_name);
+end;
+/
+
+begin
+  MyProc;
+end;
+
+--passing aruguments
+
+create or replace procedure addition(a number,b number) is
+add number(5);
+begin
+  add:=a+b;
+  dbms_output.put_line('addition'|| add);
+end;
+/
+
+begin
+  addition(10,20);
+end;
+
+--function with return type
+
+create or replace function addition(a number,b number) return number is
+add number(5);
+begin
+  add:=a+b;
+  return add;
+end;
+/
+
+declare
+res number;
+begin
+  res := addition(10,20);
+  dbms_output.put_line('addition '||res);
+end; 
+
+Output:
+
+addition 30
+
+--in Paramter
+
+create or replace procedure MyProc(v_no in numbers ) is
+
+begin
+  v_no:=v_no+1; --error because we are trying to change the value from In paramter which is constant 
+end;
+/
+begin
+  MyProc;
+end;
+
+--out statement
+
+create or replace procedure myproc(v_no out number) is 
+begin
+v_no:=10;
+dbms_output.put_line(v_no);
+end;
+/
+
+declare 
+no number(3):=20;
+begin
+myproc(no);
+end;
+
+Output:
+
+10
+
+--Cursor 
+A cursor in PL/SQL is a pointer that allows you to fetch and manipulate data row by row from a result set.
+ There are two types of cursors in PL/SQL: implicit cursors and explicit cursors.
+
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+
+declare
+  id agents.agent_code%type;
+  name agents.agent_name%type;
+  area agents.working_Area%type;
+  cursor c_agents is
+    select agent_code,agent_name,working_Area from agents;
+begin
+  open c_agents;
+  loop
+  fetch c_agents into id,name,area;
+    exit when c_agents%notfound;
+    dbms_output.put_line(id||' ' ||name||' ' ||area);
+  end loop;
+  close c_agents;
+end;
+
+Output:
+
+A101 agent1 chennai
+A102 agent2 chennai
+A103 agent3 bangalore
+A104 agent4 bangalore
+A105 agent5 new york
+
+--exception
+
+Age_Error exception;
+begin
+v_age:=&v_age
+if v_age <=0 then
+  raise Age_Error;
+else
+  dbms_output.put_line('you are age' || v_age);
+end if;
+
+exception
+when Age_Error then
+  dbms_output.put_line('Age can not be 0 or less than 0');
+end;
+
+--creating own exception
+
+
+declare
+v_age number(10);
+Age_Error exception;
+begin
+v_age:=&v_age;
+ if v_age <=0 then
+  raise Age_Error;
+else
+  dbms_output.put_line('you are age' || v_age);
+end if;
+
+exception
+when Age_Error then
+  dbms_output.put_line('Age can not be 0 or less than 0');
+end;
+
+
+--package specfication and body
+CREATE OR REPLACE PACKAGE SimpleMath AS
+  name varchar2(20) default 'Raj';
+    FUNCTION add_numbers (num1 IN NUMBER, num2 IN NUMBER) RETURN NUMBER;
+
+    FUNCTION subtract_numbers (num1 IN NUMBER, num2 IN NUMBER) RETURN NUMBER;
+END SimpleMath;
+/
+CREATE OR REPLACE PACKAGE BODY SimpleMath AS
+
+    
+    FUNCTION add_numbers (num1 IN NUMBER, num2 IN NUMBER) RETURN NUMBER IS
+    BEGIN
+        RETURN num1 + num2;
+    END add_numbers;
+
+    FUNCTION subtract_numbers (num1 IN NUMBER, num2 IN NUMBER) RETURN NUMBER IS
+    BEGIN
+        RETURN num1 - num2;
+    END subtract_numbers;
+
+END SimpleMath;
+/
+DECLARE
+    result_add NUMBER;
+    result_sub NUMBER;
+BEGIN
+     DBMS_OUTPUT.PUT_LINE('Name : ' || SimpleMath.name);
+    result_add := SimpleMath.add_numbers(10, 5);
+    DBMS_OUTPUT.PUT_LINE('Addition Result: ' || result_add);
+
+    result_sub := SimpleMath.subtract_numbers(10, 5);
+    DBMS_OUTPUT.PUT_LINE('Subtraction Result: ' || result_sub);
+END;
+/
+
+Output:
+
+Name : Raj
+Addition Result: 15
+Subtraction Result: 5
+
+--Trigger
+PL/SQL triggers are stored programs that are automatically executed or fired when specific events occur
+
+create table agents(
+    agent_code varchar2(5),
+    agent_name varchar2(20),
+    working_Area varchar2(10));
+insert into agents values('A101','agent1','chennai');
+insert into agents values('A102','agent2','chennai');
+insert into agents values('A103','agent3','bangalore');
+insert into agents values('A104','agent4','bangalore');
+insert into agents values('A105','agent5','new york');
+
+
+create or replace trigger my_trigger
+after delete or insert or update on agents 
+for each row 
+begin 
+  dbms_output.put_line("the table as been modified");
+end;
+/
+
+insert into agents values('A106','agent6','chennai');
+
+
+
+
