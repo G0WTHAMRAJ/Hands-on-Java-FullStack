@@ -11,7 +11,7 @@ public class ThrowsClass {
 	}
 
 	public static void main(String[] args) {
-		ThrowsClass.myMethod();//handle the throws Exception using the class 
+	//	ThrowsClass.myMethod(); handle the throws Exception using the class 
 		
 
 	}
