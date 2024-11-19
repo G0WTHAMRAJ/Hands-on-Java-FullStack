@@ -23,8 +23,11 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
  
-        <!-- Mappings -->
-        <mapping resource="hibernate.hbm.xml"/>
+        <!-- Mappings with annotation @ -->
+        <mapping class="com.day1.bean.Employee"/>
+        
+         <!-- Mappings with xml file -->
+        <!-- mapping resource="hibernate.hbm.xml" -->
         
     </session-factory>
 </hibernate-configuration>
