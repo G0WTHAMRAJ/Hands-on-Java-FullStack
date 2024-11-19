@@ -42,8 +42,10 @@ public class EmployeeController extends HttpServlet {
 				Employee emp = new Employee(eid, ename,esalary);
 				n = dao.insertEmployee(emp);
 				if (n == 1) {
-					RequestDispatcher rd = request.getRequestDispatcher("FormEms.jsp");
-					rd.include(request, response);
+					RequestDispatcher rd = request.getRequestDispatcher("Result.jsp");
+					request.setAttribute("status","Success");
+					request.setAttribute("msg","Record Inserted");
+					rd.forward(request, response);
 					out.println("<br><font color='green'>Record Inserted</font>");
 				} else {
 					out.println("<br><font color='red'>Record Not Inserted</font>");
