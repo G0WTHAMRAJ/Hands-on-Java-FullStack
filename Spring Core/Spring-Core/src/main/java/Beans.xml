@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="com.day1.Employee">
+		<property name="eid" value="201"></property>
+		<property name="ename" value="Raj"></property>
+		<property name="esalary" value="70000"></property>
+	</bean>
+	<bean id="emp2" class="com.day1.Employee">
+		<property name="eid" value="0"></property>
+		<property name="ename" value="null"></property>
+		<property name="esalary" value="0"></property>
+	</bean>
+	<bean id="emp3" class="com.day1.Employee">
+		<constructor-arg index="0" value="202"></constructor-arg>
+		<constructor-arg index="1" value="Nivy"></constructor-arg>
+		<constructor-arg index="2" value="70000"></constructor-arg>
+		<constructor-arg index="3" ref="address2"></constructor-arg>
+		<constructor-arg index="4" ref="department1"></constructor-arg>
+	</bean>
+	<bean id="emp4" class="com.day1.Employee">
+		<property name="eid" value="204"></property>
+		<property name="ename" value="jai"></property>
+		<property name="esalary" value="90000"></property>
+		<property name="address" ref="address1"></property>
+
+	</bean>
+	<bean id="address1" class="com.day1.Address">
+		<property name="city" value="Chennai"></property>
+		<property name="state" value="TamilNadu"></property>
+	</bean>
+	<bean id="address2" class="com.day1.Address">
+		<property name="city" value="Bangalore"></property>
+		<property name="state" value="Karnataka"></property>
+	</bean>
+
+	<bean id="department1" class="com.day1.Department">
+		<property name="dno" value="30120"></property>
+		<property name="dname" value="Development"></property>
+	</bean>
+	<bean id="question1" class="com.day1.Question">
+		<property name="id" value="01"></property>
+		<property name="question"
+			value="what is the capital of india"></property>
+		<property name="answer">
+			<list>
+				<value>Delhi</value>
+				<value>Chennai</value>
+				<value>Mumbai</value>
+				<value>pune</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="question2" class="com.day1.Question">
+		<constructor-arg index="0" value="1"></constructor-arg>
+		<constructor-arg index="1"
+			value="no of laws in newton"></constructor-arg>
+		<constructor-arg index="2">
+			<list>
+				<value>1</value>
+				<value>4</value>
+				<value>3</value>
+				<value>7</value>
+			</list>
+		</constructor-arg>
+
+	</bean>
+	<bean id="book1" class="com.day1.Book">
+		<property name="books">
+			<map>
+				<entry key="Chetan bagat" value="3 mistaks of my life" />
+				<entry key="James Clear" value="Atomic habits" />
+				<entry key="Christphor nolan" value="Inception" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="author1" class="com.day1.Author">
+		<property name="aname" value="Chetan bagat"></property>
+		<property name="alocation" value="Delhi"></property>
+
+	</bean>
+	<bean id="author2" class="com.day1.Author">
+		<property name="aname" value="Christphor Nolan"></property>
+		<property name="alocation" value="USA"></property>
+
+	</bean>
+	<bean id="author3" class="com.day1.Author">
+		<property name="aname" value="JamesClear"></property>
+		<property name="alocation" value="UsA"></property>
+
+	</bean>
+	
+	<!--   <bean id="book2" class="com.day1.Book">
+        <property name="authors">
+            <list>
+                <ref bean="author1" />
+                <ref bean="author2" />
+                <ref bean="author3" />
+            </list>
+        </property>
+    </bean> -->
+    <bean id="hello1" class="com.day1.Hello" scope="prototype">
+    <property name="msg" value="Hi"></property>
+    </bean>
+
+
+</beans>
+
