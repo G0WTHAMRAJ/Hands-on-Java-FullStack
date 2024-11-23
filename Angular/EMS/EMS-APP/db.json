@@ -9,11 +9,6 @@
       "id": "102",
       "empName": "Vijay",
       "empSalary": 3000
-    },
-    {
-      "id": "300",
-      "empName": "gowtham",
-      "empSalary": "20000"
     }
   ]
 }

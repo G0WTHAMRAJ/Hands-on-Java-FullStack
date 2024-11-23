@@ -16,7 +16,7 @@
                                     </label>
                                     <input type="text"
                                            class="form-control"
-                                           name="empId"
+                                           name="id"
                                            #id="ngModel" ngModel
                                            required
                                            pattern="[0-9]+"
@@ -77,38 +77,31 @@
                                     Insert
                                 </button>
                             &nbsp;&nbsp;
-                            
                                 <button class="btn btn-primary" (click)="updateEmployee(EmployeeForm.value)" >
                                     Update
                                 </button>&nbsp;&nbsp;
-                               
                                 <button class="btn btn-danger" (click)="deleteEmployee(EmployeeForm.value)" >
                                     Delete
                                 </button>&nbsp;&nbsp;
-                                
                                 <button class="btn btn-warning" (click)="findEmployee(EmployeeForm.value)">
                                     Find
                                 </button>
                                 &nbsp;&nbsp;
-                                
                                 <button class="btn btn-info" (click)="findAllEmployee()">
                                     Find All
                                 </button>
-                                
                             </form>
                            
                         </div>
                     </div>
                 </div>
          <br><br>
-         <p align="center"><font color="green"><b>{{result}}</b></font></p>,
-         
+         <p align="center"><font color="green"><b>{{result}}</b></font></p>
          <table align="center" width="60%" *ngIf="flag">
           <tr><th>Employee ID</th><th>Employee Name</th><th>Employee Salary</th></tr>
-          <tr *ngFor="let emp of employeeArr"><td>{{emp.empId}}</td><td>{{emp.empName}}</td>
+          <tr *ngFor="let emp of employeeArr"><td>{{emp.id}}</td><td>{{emp.empName}}</td>
             <td>{{emp.empSalary}}</td></tr>
          </table>
-         
        
     </body>
 </html>

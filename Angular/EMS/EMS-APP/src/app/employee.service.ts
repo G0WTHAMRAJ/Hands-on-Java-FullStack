@@ -9,35 +9,32 @@ export class EmployeeService {
   employeeArr:Employee[]=[]
 
   constructor(private http:HttpClient) {
-    this.url="http://localhost:1212/";
+    this.url="http://localhost:3004/employees/";
     this.employee=new Employee()
    }
 
    insertEmployee(employee:Employee){
-    this.http.post(this.url+"create-employee",employee).subscribe();
+    this.http.post(this.url,employee).subscribe();
     return "Empolyee object saved"
    }
 
    updateEmployee(employee:Employee){
-    this.http.put(this.url+"update-employee",employee).subscribe();
+    this.http.put(this.url+employee.id,employee).subscribe();
     return "Employee Object Updated"
    }
    
-   
-   deleteEmployee(empId:number){
-    this.http.delete(this.url+"delete-employee/"+empId).subscribe();
+   deleteEmployee(eid:number){
+    this.http.delete(this.url+eid).subscribe();
     return "Employee Object deleted";
    }
    
-   findEmployee(empId:number){
+   findEmployee(eid:number){
  
-    this.http.get<Employee>(this.url+"find-employee/"+empId).subscribe(emp =>this.employee=emp);
-
+    this.http.get<Employee>(this.url+eid).subscribe(emp =>this.employee=emp);
     return this.employee;
    }
-   
    findAllEmployee(){
-    this.http.get<Employee[]>(this.url+"findAll-employee").subscribe(empArr =>this.employeeArr=empArr);
+    this.http.get<Employee[]>(this.url).subscribe(empArr =>this.employeeArr=empArr);
     return this.employeeArr;
-   } 
+   }
 }
