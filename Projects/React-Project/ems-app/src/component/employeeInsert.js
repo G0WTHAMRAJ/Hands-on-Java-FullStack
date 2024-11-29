@@ -10,8 +10,11 @@ class Insert extends Component {
             eid: "",
             ename: "",
             esalary: "",
+            did:"",
             employee: "",
+            department:"",
             eidError: "",
+            didError:"",
             enameError: "",
             esalaryError: ""
         }
@@ -52,6 +55,17 @@ class Insert extends Component {
             return null
         }
     }
+    validateDid = (did) => {
+        let re = /^[0-9]+$/;
+        if (did === '')
+            return "salary is required"
+        else if (!re.test(did)) {
+            return "Invaild salary"
+        }
+        else {
+            return null
+        }
+    }
     changeId = (e) => {
         this.setState({ eid: e.target.value })
         let error = this.validateEid(this.state.eid)
@@ -68,6 +82,11 @@ class Insert extends Component {
         let error = this.validateSalary(this.state.esalary)
         this.setState({ esalaryError: error })
     }
+    changeDid = (e) => {
+        this.setState({ did: e.target.value })
+        let error = this.validated(this.state.did)
+        this.setState({ didError: error })
+    }
     getResult = (e) => {
         e.preventDefault();
         this.setState({ flag: true })
@@ -81,14 +100,19 @@ class Insert extends Component {
         let error2 = this.validateSalary(this.state.esalary)
         this.setState({ esalaryError: error2 })
 
-        if (!error && !error1 && !error2) {
+        let error3= this.validateDid(this.state.did)
+        this.setState({ didError: error2 })
+
+
+        if (!error && !error1 && !error2&&error3) {
             this.setState({ flag: true }); //validating all error is null
             let employee = new Empolyee();
             employee.setId(this.state.eid)
             employee.setName(this.state.ename)
             employee.setSalary(this.state.esalary)
+            employee.setDid(this.state.did)
 
-            axios.post("http://localhost:3004/employees", employee)
+            axios.post("http://localhost:1234/create-employee", employee)
                 .then(() => {
                     document.getElementById("ResultDiv").innerHTML = "<b>Object saved</b>";
                 })
@@ -111,6 +135,10 @@ class Insert extends Component {
 
 
                     <label for="third">Enter Employee Salary:</label>
+                    <input type='text' value={this.state.esalary} name="esalary" onChange={this.changeSalary}></input><br></br><br></br>
+                    <br></br><div><font color='red'><b>{this.state.esalaryError}</b></font></div>
+
+                    <label for="fourth">Enter Employee department:</label>
                     <input type='text' value={this.state.esalary} name="esalary" onChange={this.changeSalary}></input><br></br><br></br>
                     <br></br><div><font color='red'><b>{this.state.esalaryError}</b></font></div>
 

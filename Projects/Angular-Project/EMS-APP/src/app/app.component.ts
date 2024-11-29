@@ -39,6 +39,12 @@ export class AppComponent {
   deleteEmployee(data:any){
     this.result=this.empService.deleteEmployee(data.empId);
   }
+  deleteEmployeeByName(data:any){
+    this.result=this.empService.deleteEmployeeByName(data.empName);
+  }
+  deleteEmployeeBySalary(data:any){
+    this.result=this.empService.deleteEmployeeBySalary(data.empSalary);
+  }
   
 
   findEmployee(data:any){
@@ -52,4 +58,15 @@ export class AppComponent {
     this.flag=true
     
   } 
+  
+  findEmployeeByName(data:any){
+    this.employeeArr=this.empService.findEmployeeByName(data.empName);
+    this.flag=true;
+   
+  }
+  findEmployeeBySalary(data:any){
+    this.employeeArr=this.empService.findEmployeeBySalary(data.empSalary);
+    this.flag=true;
+   
+  }
 }

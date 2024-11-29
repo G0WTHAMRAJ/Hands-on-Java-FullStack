@@ -1,20 +1,30 @@
+import Department from "./Department";
+
 export default class Empolyee{
-    id;
-    name;
-    salary;
+    empId;
+    empName;
+    empSalary;
+    department;
+    depId;
+
 
     constructor(){
-        this.id=0
-        this.name="";
-        this.salary=0
+        this.empId=0
+        this.empName="";
+        this.empSalary=0;
+        this.department=new Department();
+        // this.depId=0;
     }
     setId(id){
-        this.id=id
+        this.empId=id
     }
     setName(name){
-        this.name=name
+        this.empName=name
     }
     setSalary(salary){
-        this.salary=salary
+        this.empSalary=salary
+    }
+    setDid(id){
+        this.depId=id;
     }
 }

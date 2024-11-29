@@ -9,7 +9,7 @@ export class EmployeeService {
   employeeArr:Employee[]=[]
 
   constructor(private http:HttpClient) {
-    this.url="http://localhost:1212/";
+    this.url="http://localhost:1234/";
     this.employee=new Employee()
    }
 
@@ -28,6 +28,14 @@ export class EmployeeService {
     this.http.delete(this.url+"delete-employee/"+empId).subscribe();
     return "Employee Object deleted";
    }
+   deleteEmployeeByName(empName:String){
+    this.http.delete(this.url+"delete-employee-name/"+empName).subscribe();
+    return "Employee Object deleted";
+   }
+   deleteEmployeeBySalary(empSalary:number){
+    this.http.delete(this.url+"delete-employee-salary/"+empSalary).subscribe();
+    return "Employee Object deleted";
+   }
    
    findEmployee(empId:number){
  
@@ -40,4 +48,17 @@ export class EmployeeService {
     this.http.get<Employee[]>(this.url+"findAll-employee").subscribe(empArr =>this.employeeArr=empArr);
     return this.employeeArr;
    } 
+   findEmployeeByName(empName:String){
+ 
+    this.http.get<Employee[]>(this.url+"find-employee-name/"+empName).subscribe(empArr =>this.employeeArr=empArr);
+
+    return this.employeeArr;
+   }
+   findEmployeeBySalary(empSalary:number){
+ 
+    this.http.get<Employee[]>(this.url+"find-employee-salary/"+empSalary).subscribe(empArr =>this.employeeArr=empArr);
+
+    return this.employeeArr;
+   }
+   
 }
